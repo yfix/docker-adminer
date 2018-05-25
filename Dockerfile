@@ -1,4 +1,4 @@
-FROM yfix/php:7.2
+FROM yfix/php:7.1
 
 RUN	mkdir -p /var/www/html \
   && mkdir -p /var/www/html/plugins-enabled \
