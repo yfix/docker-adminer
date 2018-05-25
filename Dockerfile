@@ -21,14 +21,15 @@ RUN	set -x \
 
 COPY	*.php /var/www/html/
 
-ENV	ADMINER_VERSION 4.6.2
-ENV	ADMINER_DOWNLOAD_SHA256 2b3e5e87ed1214288378fc272c1ba0497ec2f1128444e3a581eabd435f5575b9
-ENV	ADMINER_SRC_DOWNLOAD_SHA256 13f26a5aeed2f734d9309a922592f2e2b35ba2ea5c1c2a2c8402ca26a8808682
+ENV	ADMINER_VERSION 4.3.2-yfix
+ENV	ADMINER_DOWNLOAD_SHA256 0acba5c7034b2ca3c00a13ba1a1300b084781f28ce9bc2e063549dec9c905025
+ENV	ADMINER_SRC_DOWNLOAD_SHA256 d30ea917f8830110dec4035c408f626e67ee868e21361c4ce86de27a51565613
+ENV	ADMINER_REPO yfix/adminer
 
 RUN	set -x \
-&&	curl -fsSL https://github.com/vrana/adminer/releases/download/v$ADMINER_VERSION/adminer-$ADMINER_VERSION.php -o adminer.php \
+&&	curl -fsSL https://github.com/$ADMINER_REPO/releases/download/v$ADMINER_VERSION/adminer-$ADMINER_VERSION.php -o adminer.php \
 &&	echo "$ADMINER_DOWNLOAD_SHA256  adminer.php" |sha256sum -c - \
-&&	curl -fsSL https://github.com/vrana/adminer/archive/v$ADMINER_VERSION.tar.gz -o source.tar.gz \
+&&	curl -fsSL https://github.com/$ADMINER_REPO/archive/v$ADMINER_VERSION.tar.gz -o source.tar.gz \
 &&	echo "$ADMINER_SRC_DOWNLOAD_SHA256  source.tar.gz" |sha256sum -c - \
 &&	tar xzf source.tar.gz --strip-components=1 "adminer-$ADMINER_VERSION/designs/" "adminer-$ADMINER_VERSION/plugins/" \
 &&	rm source.tar.gz
