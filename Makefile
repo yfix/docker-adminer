@@ -14,7 +14,8 @@ logs:
 	docker-compose logs -f
 pull:
 	docker-compose pull
-get:
+update: get
 	./update.sh
+get: update
 test:
 	curl -kv -X GET http://localhost:55080/
