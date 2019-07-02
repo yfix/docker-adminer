@@ -1,9 +1,8 @@
-version: '2'
+version: '3'
 services:
   adminer:
-#    build: .
     image: yfix/adminer
     ports:
       - "55080:8080"
-#    volumes:
-#      - ./:/app
+    volumes:
+      - ./docker/etc/adminer/php.ini:/usr/local/etc/php/php.ini
