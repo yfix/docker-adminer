@@ -34,6 +34,8 @@ RUN	set -x \
 &&	tar xzf source.tar.gz --strip-components=1 "adminer-$ADMINER_VERSION/designs/" "adminer-$ADMINER_VERSION/plugins/" \
 &&	rm source.tar.gz
 
+COPY	docker/etc/adminer/php.ini /usr/local/etc/php/php.ini
+
 COPY	entrypoint.sh /usr/local/bin/
 ENTRYPOINT	[ "entrypoint.sh", "docker-php-entrypoint" ]
 
